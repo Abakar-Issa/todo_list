@@ -1,5 +1,7 @@
 # AppMobile
 
+=======> Actuellement le src ne contient que deux fichiers (App.vue et main.js) suffisant pour lancer le todolist de base avec ionic 
+
 L’objectif du projet est de réaliser une application de gestion de tâches (todolist) complète, en Vue.js uniquement (pas de ionic).
 Vous pouvez donc repartir de ce que vous aviez commencé à faire lors du TP3.
 L’application permettra de : 
