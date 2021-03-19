@@ -1,28 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-    <TodoList />
-    //<HelloWorld msg="Welcome to Your Vue.js App"/>
+    <SidebarItem />
+    <TodoList listName="todolist" />
+    <router />
+    <router-link to="/"> Home</router-link>
+    <router-view></router-view>
 </template>
 
 <script>
+import SidebarItem from './components/sidebarItem.vue'
 import TodoList from './components/TodoList.vue'
+import router from './router'
+
 
 
 export default {
   name: 'App',
   components: {
-    TodoList
+    TodoList,
+    SidebarItem,
+    router
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+
