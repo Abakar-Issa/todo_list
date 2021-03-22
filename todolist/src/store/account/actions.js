@@ -1,17 +1,36 @@
-/*import axios from 'axios';
+import axios from 'axios';
 
-const httpClient = axios.create({
-    baseURL: 'http://138.68.74.39/api/',
-    headers: {
-        "Content-Type": "application/json",
-        // anything you want to add to the headers
-        "Authorization" : 'Bearer' + this.getAuthToken()
-    }
-});
-export function load({ commit }){
-    axios.get(httpClient.baseURL + "issa")
-            .then(response => {
-                commit("load", response.data);
-            })
+export function signUp(store, payload){
 
-}*/
+    axios.post("http://138.68.74.39/api/register",payload)
+    .then(function (response) {
+      console.log("j'ai reussi ");
+      store.commit("register", response.data.token);
+    })
+    .catch(
+        function (error) {
+            // handle error
+            console.log(error);
+          })
+    .then(function () {
+            // always executed
+         });
+  }
+
+export function signIn(store, payload){
+    axios
+    .post("http://138.68.74.39/api/login",payload)
+    .then(function (response) {
+
+      console.log(response.data);
+      store.commit("login", response.data.token);
+    })
+    .catch(
+        function (error) {
+            // handle error
+            console.log(error);
+          })
+    .then(function () {
+            // always executed
+          });
+  }

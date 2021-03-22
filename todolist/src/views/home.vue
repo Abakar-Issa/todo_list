@@ -1,33 +1,48 @@
 <template>
-    <h1>un home</h1>
-    <div class="home">
-        
+    <h1>Home </h1>
+    <sidebarItem ></sidebarItem>
+    <div class="home" v-for="list in getTodoLists" :key="list.id">
         <ul>
-            <li v-for="todo in todos" :key="todo.name">
-                Bonjour
-                {{todo.name}}
+            <li >
+                <button @click="displayTodoList(list.name)" >{{list.name}}</button>
             </li>
         </ul>
+        <TodoList v-show="showToDisplay" v-if="toDisplay==list.name" id ="list.name" />
     </div>
 </template>
 
 <script>
     import { mapActions, mapGetters } from "vuex";
-    //import  TodoList from '../components/TodoList.vue';
-
+    import sidebarItem  from '@/components/sidebarItem.vue'
+    import TodoList from '@/components/TodoList.vue'
+    
     export default {
         name: 'Home',
         components: {
-            //TodoList
+            TodoList,
+            sidebarItem
+        },
+        data(){
+            return{
+                showToDisplay:false,
+                toDisplay : ''
+            }
         },
         methods: {
-            ...mapActions(['load']),
+            ...mapActions('todolist',['loadAllTodolists']),
+
+             displayTodoList(id){
+                 if(this.showToDisplay==false) this.showToDisplay=true
+                 else this.showToDisplay = false
+
+                  this.toDisplay = id
+			},
         },
         created() {
-            this.load()
+            this.loadAllTodolists();
         },
         computed: {
-            ...mapGetters(['todos'])
+            ...mapGetters('todolist',['getTodoLists'])
         },
 
         props:{

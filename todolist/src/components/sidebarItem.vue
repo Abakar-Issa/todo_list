@@ -1,43 +1,63 @@
 <template>
-	<h1> SidebarItem </h1>
+  <h2>Sidebar</h2>
+  <input type="text"  placeholder="ajouter une todolist" v-model="toCreateTodoList" @keyup.enter="newTodoList">  
+  <br>
+  <button @click="removeTodolist(list.id)" >Remove </button>
 
-	<div id="sidebar" v-for="task in lists" :key="task.nom"> 
-		<ul>
-            <li >
-                <router-link to="/sidebar.vue" >
-                     {{task.nom}}
-                </router-link>
-            </li>
-        </ul>
-	</div>
-	<div>
-		<button @click="newList">Ajouter une liste </button>
-	</div>
 </template>
 
 <script>
+
+import { mapGetters, mapActions } from "vuex"
+import TodoList from './TodoList.vue'
+
 	export default  {
-		name: 'SidebarItem',data () {
-			return {
+		name : "sidebarItem",
+		data(){
+			return{
 				lists:[{
-					nom  : 'Liste 1',
-					todolist : {
-						name : 'tache 1',
-						checked : false
-					}
+					id:"1",
+					
 				}
 				],
+				toCreateTodoList :'',
 			}
+		},
+		props:{
+			
+		},
+		components(){
+			TodoList
 		}
+		
 		,methods:{
-			addList(x,text,check){
-				this.todoList.push({
-					nom : x,todolist : {
-						name : text,checked : check
-					}
-				}
-				)
+			...mapActions("todolist",['delTodolist','createTodolist']),
+           
+
+			newTodoList(){
+				var newId = this.taille + 1;
+				this.createTodolist({
+					name : this.toCreateTodoList +" "+ newId,
+						
+				})
+
+				this.toCreateTodoList = ''
+			},
+
+			removeTodolist(todoList){
+				this.delTodolist(todoList.id)
 			}
-		}  
+		},
+		computed:{
+			...mapGetters('todolist', ['getTodoLists','getTodoList','getLength']),
+
+			todolists(){
+				return this.getTodoLists;
+				},
+			taille(){
+				return this.getLength;
+			}
+				}
 	}
+
 </script>

@@ -1,6 +1,6 @@
-/*export function mesTodos(state) {
-    return state.sidebar;
-}*/
+export function getToken(state) {
+    return state.Token;
+}
 
 
 

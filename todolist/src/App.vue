@@ -1,25 +1,20 @@
 <template>
-    <SidebarItem />
-    <TodoList listName="todolist" />
-    <router />
-    <router-link to="/"> Home</router-link>
+<div>
+    <router-link to="/"> Home</router-link> |
+    <router-link to="/login"> Login</router-link>
+</div>
     <router-view></router-view>
 </template>
 
 <script>
-import SidebarItem from './components/sidebarItem.vue'
-import TodoList from './components/TodoList.vue'
-import router from './router'
+
 
 
 
 export default {
   name: 'App',
   components: {
-    TodoList,
-    SidebarItem,
-    router
-  }
+     }
 }
 </script>
 
