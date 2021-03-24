@@ -1,11 +1,12 @@
 <template>
-  <label for="email">Email:</label>
-  <input type="email" v-model="email"  name="email" />
+  
+  <input type="email" placeholder="email" v-model="email"  name="email" />
   <br>
-  <label for="password">password:</label>
-  <input type="password" id="password" name="password" v-model="password" />
+  <br>
+  <input type="password" placeholder="password" id="password" name="password" v-model="password" />
    <br>
-  <button v-on:click="login">Login</button>
+   <br>
+  <button v-on:click="login">Connexion</button>
 </template>
 
 <script>

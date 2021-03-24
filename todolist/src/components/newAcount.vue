@@ -1,15 +1,16 @@
 <template>
 
-  <label for="Name">Name:</label>
-  <input type="text" id="name" name="name" v-model="name" />
+  
+  <input type="text" placeholder="name" id="name" name="name" v-model="name" />
   <br>
-  <label for="email">Email:</label>
-  <input type="email" v-model="email" id="email" name="email" />
   <br>
-  <label for="password">password:</label>
-  <input type="password"  name="password" v-model="password" />
+  <input type="email" placeholder="email" v-model="email" id="email" name="email" />
   <br>
-  <button v-on:click="createAccount">register</button>
+  <br>
+  <input type="password" placeholder="password" name="password" v-model="password" />
+  <br>
+  <br>
+  <button v-on:click="createAccount">Créer </button>
 </template>
 
 <script>

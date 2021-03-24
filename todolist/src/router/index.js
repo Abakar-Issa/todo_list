@@ -12,6 +12,11 @@ export const routes = [
     path: '/login',
     name: 'Login',
     component: () => import('../views/login.vue')
+  },
+  {
+    path: '/About',
+    name: 'About',
+    component: () => import('../views/About.vue')
   }
 ]
 

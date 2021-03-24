@@ -1,19 +1,21 @@
 <template>
-    <h1>Home </h1>
+  <section >
     <sidebarItem ></sidebarItem>
-    <div class="home" v-for="list in getTodoLists" :key="list.id">
-        <ul>
+    <div class="home" v-for="todolist in todolists" :key="todolist.id">
+        <ul >
             <li >
-                <button @click="displayTodoList(list.name)" >{{list.name}}</button>
+                <label @click="displayTodoList(todolist.name)" >{{todolist.name}}</label>
             </li>
         </ul>
-        <TodoList v-show="showToDisplay" v-if="toDisplay==list.name" id ="list.name" />
+        <TodoList  v-show="showToDisplay" v-if="toDisplay==todolist.name" :id="todolist.name"  />
+        <button v-show="showToDisplay" v-if="toDisplay==todolist.name" @click="removeTodolist(todolist.id)" >Supprimer</button>
     </div>
+   </section>
 </template>
 
 <script>
     import { mapActions, mapGetters } from "vuex";
-    import sidebarItem  from '@/components/sidebarItem.vue'
+    import sidebarItem  from '@/components/sidebar.vue'
     import TodoList from '@/components/TodoList.vue'
     
     export default {
@@ -29,8 +31,10 @@
             }
         },
         methods: {
-            ...mapActions('todolist',['loadAllTodolists']),
-
+            ...mapActions('todolist',['loadAllTodolists','delTodoList']),
+            removeTodolist(Id){
+                this.delTodoList(Id);
+                },
              displayTodoList(id){
                  if(this.showToDisplay==false) this.showToDisplay=true
                  else this.showToDisplay = false
@@ -42,7 +46,11 @@
             this.loadAllTodolists();
         },
         computed: {
-            ...mapGetters('todolist',['getTodoLists'])
+            ...mapGetters('todolist',['getTodoLists']),
+            todolists(){
+                return this.getTodoLists;
+            }
+
         },
 
         props:{

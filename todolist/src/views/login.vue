@@ -1,9 +1,9 @@
 <template>
   <div class="login">
-  <h1>Login </h1>
+  <h2>Se connecter </h2>
   <toLogin></toLogin>
   <br>
-  <h1> Create Account </h1>
+  <h2> Créer un compte </h2>
   <newAcount ></newAcount>
   <br>
   </div>
@@ -13,7 +13,8 @@
 import toLogin from '../components/toLogin.vue';
 import newAcount from '../components/newAcount.vue';
 export default {
+  
   components: { toLogin, newAcount },
-  name: "Login"
+  name: "Login",
 };
 </script>

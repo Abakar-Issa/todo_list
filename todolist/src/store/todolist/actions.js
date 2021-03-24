@@ -19,7 +19,7 @@ export function createTodolist({ commit, rootGetters }, payload) {
     });
   }
 
-  /*//pour creer un todo
+  //pour creer un todo
   export function createTodo({ commit, rootGetters }, payload) {
     var token = rootGetters["account/getToken"];
 
@@ -27,13 +27,14 @@ export function createTodolist({ commit, rootGetters }, payload) {
         headers: { Authorization: "Bearer " + token },
       })
       .then(response => {
-        console.log(response);
+
+        console.log("reussi");
         commit("addTodo", response.data);
       })
-      .catch( 
-          console.log("erreur !!")
-          
-        );
+      .catch(error =>{
+        console.log(error.response)
+    }
+    );
   }
 
   //supprimer un todo
@@ -48,10 +49,11 @@ export function createTodolist({ commit, rootGetters }, payload) {
 
         commit("deleteTodo", payload);
       })
-      .catch(
-          console.log("erreur !!")
+      .catch(error =>{
+          console.log(error.response)
+      }
       );
-  }*/
+  }
   export function delTodoList({ commit, rootGetters }, id) {
     var token = rootGetters["account/getToken"];
   
@@ -88,22 +90,4 @@ export function createTodolist({ commit, rootGetters }, payload) {
     });
   }
 
-  /*
-export function editTodo({ commit, rootGetters }, payload) {
-  let token = rootGetters["account/getToken"];
-
-  axios
-    .patch("http://138.68.74.39/api/todo/"+payload.todo_id, payload, {
-      headers: { Authorization: "Bearer " + token },
-    })
-    .then(function(response) {
-      // handle success
-      console.log(response);
-      commit("editTodo", payload);
-    })
-    .catch(
-        console.log("erreur !!")
-
-    );
-}
-  */
+  

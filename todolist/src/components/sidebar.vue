@@ -1,8 +1,8 @@
 <template>
-  <h2>Sidebar</h2>
+  <h2>Todolist </h2>
   <input type="text"  placeholder="ajouter une todolist" v-model="toCreateTodoList" @keyup.enter="newTodoList">  
   <br>
-  <button @click="removeTodolist(list.id)" >Remove </button>
+
 
 </template>
 
@@ -35,9 +35,8 @@ import TodoList from './TodoList.vue'
            
 
 			newTodoList(){
-				var newId = this.taille + 1;
 				this.createTodolist({
-					name : this.toCreateTodoList +" "+ newId,
+					name : this.toCreateTodoList ,
 						
 				})
 
